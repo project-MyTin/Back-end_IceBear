@@ -1,8 +1,8 @@
 import fs from 'fs';
 import winston from 'winston';
-const { combine, timestamp, printf } = winston.format;
 import env from '../config/env';
 
+const { combine, timestamp, printf } = winston.format;
 const { logDir } = env.winston;
 
 if(!fs.existsSync(logDir)) {
