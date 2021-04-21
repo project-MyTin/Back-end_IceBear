@@ -1,5 +1,6 @@
 import fs from 'fs';
 import winston from 'winston';
+const { combine, timestamp, printf } = winston.format;
 import env from '../config/env';
 
 const { logDir } = env.winston;
@@ -7,6 +8,10 @@ const { logDir } = env.winston;
 if(!fs.existsSync(logDir)) {
     fs.mkdirSync(logDir);
 }
+
+const logFormat = printf(info => {
+    return `${info.timestamp} ${info.level}: ${info.message}`;
+  });
 
 const infoTransport = new winston.transports.File({
     filename: 'info.log',
@@ -21,6 +26,10 @@ const errorTransport = new winston.transports.File({
 });
 
 const logger = winston.createLogger({
+    format: combine(
+        timestamp({ format: 'YYYY-MM-DD HH:mm:ss', }),
+        logFormat
+    ),
     transports: [infoTransport, errorTransport]
 });
 
