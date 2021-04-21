@@ -1,8 +1,17 @@
+import { logger } from "../../main/config/winston";
+import { ServerError } from "../errors";
+import { ok, serverError } from "../helpers";
 import { Controller, HttpResponse } from "../protocols";
 
 export class MotionPostController implements Controller {
     constructor() {}
     async handle(request:MotionPostController.Request): Promise<HttpResponse> {
+        try {
+            return ok({});
+        }
+        catch(err) {
+            return serverError(new ServerError(err.stack));
+        }
         
     }
 }
