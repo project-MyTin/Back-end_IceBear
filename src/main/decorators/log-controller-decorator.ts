@@ -9,7 +9,7 @@ export class LogControllerDecorator implements Controller {
     async handle(request: any): Promise<HttpResponse> {
         const httpResponse = await this.controller.handle(request);
         if(httpResponse.status === 500) {
-            logger.error(httpResponse.data);// 에러 스택 로깅하기   
+            logger.error(httpResponse.data);
         }
         return httpResponse;
     }
