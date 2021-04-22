@@ -11,6 +11,7 @@ export class MotionRepository implements AddMotionRepository, UpdateMotionReposi
     }
 
     async updateMotion(data: UpdateMotionRepository.Params): Promise<boolean> {
+        if(!data.file) { delete data.file }
         const result = await (await Motion).findOneAndUpdate({ motion_id: data.id }, { ...(data) });
         return !!result;
         // 성공을 했다면 result에는 옛날 데이터가 나온다.
