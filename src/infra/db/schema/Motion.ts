@@ -2,7 +2,6 @@ import { Schema } from 'mongoose';
 import autoIncrement from 'mongoose-auto-increment';
 
 const Motion = new Schema({
-    // _id: Schema.Types.ObjectId,
     motion_id: {
         type: Number,
         unique: true,
@@ -18,10 +17,33 @@ const Motion = new Schema({
     },
     time: {
         type: Number,
+        require: true,
+    },
+    description: {
+        type: String,
+        require: true,
+    },
+    type: {
+        type: String,
+        require: true,
     },
     parts: {
-        type: [String]
-    }
+        type: [String],
+        require: true,
+    },
+    difficulty: {
+        type: String,
+        require: true,
+    },
+    url: {
+        type: String,
+    },
+},
+{
+    timestamps: {
+        createdAt: true,
+        updatedAt: true,
+    },
 });
 
 Motion.plugin(autoIncrement.plugin, {
