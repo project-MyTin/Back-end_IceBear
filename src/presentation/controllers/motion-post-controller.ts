@@ -17,7 +17,6 @@ export class MotionPostController implements Controller {
                 time: Number(request.time),
                 file,
             });
-            // ++ 파일 업로드할 때 미들웨어로 빼주기
             // 이미지 업로드 시 파일명 uuid 정해지기
             return ok({});
         }
