@@ -3,10 +3,12 @@ import { Controller } from "../../presentation/protocols";
 
 export const adaptRoute = (controller: Controller) => {
     return async (req: Request, res: Response) => {
+        console.log(req.file);
         const request = {
             ...(req.body || {}),
             ...(req.params || {}),
-            ...(req.query || {})
+            ...(req.query || {}),
+            file: req.file["key"] || {},
         };
         const httpResponse = await controller.handle(request);
         const { status, statusCode, message, data } = httpResponse;
