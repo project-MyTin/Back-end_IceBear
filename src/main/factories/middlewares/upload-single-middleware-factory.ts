@@ -1,6 +1,6 @@
 import { UploadSingleMiddleware } from "../../../presentation/middlewares";
 import { Middleware } from "../../../presentation/protocols";
 
-export const makeUploadSingleMiddleware = (): Middleware => {
-    return new UploadSingleMiddleware();
+export const makeUploadSingleMiddleware = (field: string): Middleware => {
+    return new UploadSingleMiddleware(field);
 }
