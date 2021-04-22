@@ -8,4 +8,5 @@ import { uploadSingleUpdate } from "../middlewares/upload-single-update";
 export default (router: Router): void => {
     router.post('/motion', upload.single('img'), uploadSingle, adaptRoute(makeMotionPostController()));
     router.put('/motion/:id', upload.single('img'), uploadSingleUpdate, adaptRoute(makeMotionPutController()));
+    router.delete('/motion/:id', adaptRoute());
 };
