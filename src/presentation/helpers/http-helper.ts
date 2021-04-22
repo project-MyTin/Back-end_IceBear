@@ -13,6 +13,12 @@ export const badRequest = (error: Error): HttpResponse => ({
     message: error.message
 });
 
+export const notFound = (error: Error): HttpResponse => ({
+    status: 404,
+    statusCode: error.name,
+    message: error.message
+});
+
 export const serverError = (error: Error): HttpResponse => ({
     status: 500,
     statusCode: error.name,
