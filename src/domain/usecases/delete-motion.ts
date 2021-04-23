@@ -1,5 +1,5 @@
 export interface DeleteMotion {
-    delete:(data: DeleteMotion.Params) => Promise<boolean>;
+    delete:(data: DeleteMotion.Params) => Promise<string>;
 }
 
 export namespace DeleteMotion {
