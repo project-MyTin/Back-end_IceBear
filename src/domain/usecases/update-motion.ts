@@ -1,5 +1,3 @@
-import { MiddlewareRequest } from "../../presentation/protocols";
-
 export interface UpdateMotion {
     update:(data: UpdateMotion.Params) => Promise<boolean>;
 }
