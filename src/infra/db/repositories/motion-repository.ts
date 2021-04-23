@@ -25,6 +25,17 @@ export class MotionRepository implements AddMotionRepository, UpdateMotionReposi
     }
 
     async loadMotion(data: LoadMotionRepository.Params): Promise<LoadMotionRepository.Result> {
-        
+        const result = await (await Motion).findOne({ motion_id: data.id });
+        if(!result) { return null; }
+        return {
+            file: result["file"],
+            name: result["name"],
+            type: result["type"],
+            difficulty: result["difficulty"],
+            time: result["time"],
+            parts: result["parts"],
+            description: result["description"],
+            url: result["url"],
+        };
     }
 }
