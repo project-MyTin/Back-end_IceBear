@@ -1,9 +1,9 @@
-import { AddMotionRepository, UpdateMotionRepository } from "../../../data/protocols/repository";
+import { AddMotionRepository, DeleteMotionRepository, UpdateMotionRepository } from "../../../data/protocols/repository";
 import { MongoHelper } from "../mongo-helper";
 
 const Motion = MongoHelper.loadSchema('Motion');
 
-export class MotionRepository implements AddMotionRepository, UpdateMotionRepository {
+export class MotionRepository implements AddMotionRepository, UpdateMotionRepository, DeleteMotionRepository {
     async addMotion(data: AddMotionRepository.Params): Promise<void> {
         const input = new (await Motion)(data);
         // console.log(input); // test 로깅
@@ -16,5 +16,9 @@ export class MotionRepository implements AddMotionRepository, UpdateMotionReposi
         return !!result;
         // 성공을 했다면 result에는 옛날 데이터가 나온다.
         // 실패를 했다면 result에는 null 값이 넘겨진다.
+    }
+
+    async deleteMotion(data: DeleteMotionRepository.Params): Promise<boolean> {
+        
     }
 }
