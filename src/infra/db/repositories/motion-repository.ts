@@ -19,6 +19,7 @@ export class MotionRepository implements AddMotionRepository, UpdateMotionReposi
     }
 
     async deleteMotion(data: DeleteMotionRepository.Params): Promise<boolean> {
-        
+        const result = await (await Motion).findOneAndDelete({ motion_id: data.id });
+        return !!result;
     }
 }
