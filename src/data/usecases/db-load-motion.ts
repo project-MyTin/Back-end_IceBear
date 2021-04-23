@@ -6,6 +6,6 @@ export class DbLoadMotion implements LoadMotion {
         private readonly loadMotionRepository: LoadMotionRepository
     ) {}
     async load(data: LoadMotion.Params): Promise<LoadMotionRepository.Result> {
-        
+        return await this.loadMotionRepository.loadMotion(data);
     }
 }
