@@ -6,6 +6,7 @@ export class DbDeleteMotion implements DeleteMotion {
         private readonly deleteMotionRepository: DeleteMotionRepository
     ) {}
     async delete(data: DeleteMotion.Params): Promise<boolean> {
-        
+        const result = await this.deleteMotionRepository.deleteMotion({ id: data.id });
+        return result;
     }
 }
