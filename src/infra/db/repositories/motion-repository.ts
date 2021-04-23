@@ -18,8 +18,9 @@ export class MotionRepository implements AddMotionRepository, UpdateMotionReposi
         // 실패를 했다면 result에는 null 값이 넘겨진다.
     }
 
-    async deleteMotion(data: DeleteMotionRepository.Params): Promise<boolean> {
+    async deleteMotion(data: DeleteMotionRepository.Params): Promise<string> {
         const result = await (await Motion).findOneAndDelete({ motion_id: data.id });
-        return !!result;
+        if(!result) { return null; }
+        return result["file"];
     }
 }
