@@ -1,9 +1,9 @@
-import { AddMotionRepository, DeleteMotionRepository, UpdateMotionRepository } from "../../../data/protocols/repository";
+import { AddMotionRepository, DeleteMotionRepository, LoadMotionRepository, UpdateMotionRepository } from "../../../data/protocols/repository";
 import { MongoHelper } from "../mongo-helper";
 
 const Motion = MongoHelper.loadSchema('Motion');
 
-export class MotionRepository implements AddMotionRepository, UpdateMotionRepository, DeleteMotionRepository {
+export class MotionRepository implements AddMotionRepository, UpdateMotionRepository, DeleteMotionRepository, LoadMotionRepository {
     async addMotion(data: AddMotionRepository.Params): Promise<void> {
         const input = new (await Motion)(data);
         // console.log(input); // test 로깅
@@ -22,5 +22,9 @@ export class MotionRepository implements AddMotionRepository, UpdateMotionReposi
         const result = await (await Motion).findOneAndDelete({ motion_id: data.id });
         if(!result) { return null; }
         return result["file"];
+    }
+
+    async loadMotion(data: LoadMotionRepository.Params): Promise<LoadMotionRepository.Result> {
+        
     }
 }
