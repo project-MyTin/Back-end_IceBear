@@ -1,9 +1,9 @@
-import { AddMotionRepository, DeleteMotionRepository, LoadMotionRepository, UpdateMotionRepository } from "../../../data/protocols/repository";
+import { AddMotionRepository, DeleteMotionRepository, LoadMotionRepository, LoadMotionResultRepository, UpdateMotionRepository } from "../../../data/protocols/repository";
 import { MongoHelper } from "../mongo-helper";
 
 const Motion = MongoHelper.loadSchema('Motion');
 
-export class MotionRepository implements AddMotionRepository, UpdateMotionRepository, DeleteMotionRepository, LoadMotionRepository {
+export class MotionRepository implements AddMotionRepository, UpdateMotionRepository, DeleteMotionRepository, LoadMotionRepository, LoadMotionResultRepository {
     async addMotion(data: AddMotionRepository.Params): Promise<void> {
         const input = new (await Motion)(data);
         // console.log(input); // test 로깅
@@ -37,5 +37,13 @@ export class MotionRepository implements AddMotionRepository, UpdateMotionReposi
             description: result["description"],
             url: result["url"],
         };
+    }
+
+    async loadMotionResult(data: LoadMotionResultRepository.Params): Promise<LoadMotionResultRepository.Result> {
+        // 검색 로직 구현
+        const list = await (await Motion).find({ name: { $regex: data.q } }).select(
+            "-_id motion_id name difficulty parts file"  
+        );
+        return list as any;
     }
 }
