@@ -7,15 +7,15 @@ export namespace AddRoutine {
         motionId: number,
         motionTime: number,
         numOfMotion: number,
-    }
+    };
     export type Params = {
         fileName: string,
         name: string,
-        materials: string,
         description: string,
+        materials: string,
         type: string,
         difficulty: string,
-        breakTime: string,
+        breakTime: number,
         motions: MotionInRoutine[]
-    }
+    };
 }
