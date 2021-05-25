@@ -30,6 +30,7 @@ const Routine = new Schema({
             motion_name: { type: String },
             motion_file: { type: String },
             motion_time: { type: Number },
+            numOfMotion: { type: Number },
             motion_parts: { type: [String] },
         }]
     },
@@ -44,6 +45,9 @@ const Routine = new Schema({
     },
     type: {
         type: String,
+    },
+    break_time: {
+        type: Number,
     },
 },
 {
