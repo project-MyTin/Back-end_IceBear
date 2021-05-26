@@ -4,8 +4,8 @@ export interface AddRoutine {
 
 export namespace AddRoutine {
     export type MotionInRoutine = {
-        motionId: number,
-        motionTime: number,
+        motion_id: number,
+        motion_time: number,
         numOfMotion: number,
     };
     export type Params = {

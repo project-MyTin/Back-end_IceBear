@@ -9,8 +9,8 @@ export class DbAddRoutine implements AddRoutine {
     async add(data: AddRoutine.Params): Promise<void> {
         let motionInRoutine = [];
         for(const motion of data.motions) {
-            let result = await this.motionRepository.loadMotion({ id: motion.motionId + "" });
-            const { motionId: motion_id, motionTime: motion_time, numOfMotion } = motion;
+            let result = await this.motionRepository.loadMotion({ id: motion.motion_id + "" });
+            const { motion_id, motion_time, numOfMotion } = motion;
             const { name: motion_name, file: motion_file, parts: motion_parts } = result;
             let motionDetail = {
                 motion_id,
