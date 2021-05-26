@@ -6,3 +6,4 @@ export * from './motion-search-controller';
 export * from './routine-post-controller';
 export * from './routine-put-controller';
 export * from './routine-delete-controller';
+export * from './routine-search-controller';

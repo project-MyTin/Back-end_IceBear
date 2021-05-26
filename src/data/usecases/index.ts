@@ -6,3 +6,4 @@ export * from './db-load-motion-result';
 export * from './db-add-routine';
 export * from './db-update-routine';
 export * from './db-delete-routine';
+export * from './db-load-routine-result';
