@@ -1,12 +1,16 @@
+import { DeleteRoutine } from "../../domain/usecases";
 import { ServerError } from "../errors";
-import { serverError } from "../helpers";
+import { ok, serverError } from "../helpers";
 import { Controller, HttpResponse } from "../protocols";
 
 export class RoutineDeleteController implements Controller {
-    constructor() {}
+    constructor(
+        private readonly deleteRoutine: DeleteRoutine
+    ) {}
     async handle(request: RoutineDeleteController.Request): Promise<HttpResponse> {
         try {
-            
+
+            return ok({});
         } catch (err) {
             return serverError(new ServerError(err.stack));
         }
