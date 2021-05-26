@@ -1,8 +1,12 @@
 import { DeleteRoutine } from "../../domain/usecases";
+import { DeleteRoutineRepository } from "../protocols/repository";
 
 export class DbDeleteRoutine implements DeleteRoutine {
-    constructor() {}
+    constructor(
+        private readonly routineRepository: DeleteRoutineRepository
+    ) {}
     async delete(data: DeleteRoutine.Params): Promise<string> {
-        // repository namespace (usecases) 정의하기
+        const result = await this.routineRepository.deleteRoutine({ id: data.id });
+        return result;
     }
 }
