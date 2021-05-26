@@ -19,9 +19,11 @@ export class RoutinePostController implements Controller {
                 let testJson = JSON.parse(motion);
                 motionsArr.push(testJson);
             }
+            const { imageKey:fileName } = request.mid;
             await this.addRoutine.add({
                 ...(request),
-                fileName: "request.mid.imageKey",
+                // fileName: "request.mid.imageKey",
+                fileName,
                 motions: motionsArr,
                 breakTime: Number(breakTime)
             });
