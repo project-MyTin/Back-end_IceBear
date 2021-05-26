@@ -5,3 +5,4 @@ export * from './db-load-motion';
 export * from './db-load-motion-result';
 export * from './db-add-routine';
 export * from './db-update-routine';
+export * from './db-delete-routine';
