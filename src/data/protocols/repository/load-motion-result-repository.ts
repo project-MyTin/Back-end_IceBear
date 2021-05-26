@@ -7,4 +7,4 @@ export class LoadMotionResultRepository {
 export namespace LoadMotionResultRepository {
     export type Params = LoadMotionResult.Params;
     export type Result = LoadMotionResult.Result;
-}
+}// 레포지토리 추가하기
