@@ -7,3 +7,4 @@ export * from './make-routine-post-controller';
 export * from './make-routine-put-controller';
 export * from './make-routine-delete-controller';
 export * from './make-routine-search-controller';
+export * from './make-routine-get-controller';

@@ -7,3 +7,4 @@ export * from  './add-routine';
 export * from  './update-routine';
 export * from  './delete-routine';
 export * from   './load-routine-result';
+export * from   './load-routine';

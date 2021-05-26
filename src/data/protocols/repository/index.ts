@@ -7,3 +7,4 @@ export * from './add-routine-repositroy';
 export * from './update-routine-repository';
 export * from './delete-routine-repository';
 export * from './load-routine-result-repository';
+export * from './load-routine-repository';

@@ -7,3 +7,4 @@ export * from './routine-post-controller';
 export * from './routine-put-controller';
 export * from './routine-delete-controller';
 export * from './routine-search-controller';
+export * from './routine-get-controller';
