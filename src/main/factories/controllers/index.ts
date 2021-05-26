@@ -5,3 +5,4 @@ export * from './make-motion-get-controller';
 export * from './make-motion-search-controller';
 export * from './make-routine-post-controller';
 export * from './make-routine-put-controller';
+export * from './make-routine-delete-controller';
