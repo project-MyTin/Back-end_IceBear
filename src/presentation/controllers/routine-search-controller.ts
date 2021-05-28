@@ -23,7 +23,7 @@ export class RoutineSearchController implements Controller {
 export namespace RoutineSearchController {
     export type Request = {
         q: string,
-        part: string,
-        type: string
+        part: string,   // 현재 없음
+        type: string,   // 현재 없음
     }
 }
