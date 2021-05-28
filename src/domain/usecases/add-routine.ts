@@ -1,5 +1,5 @@
 export interface AddRoutine {
-    add:(data: AddRoutine.Params) => Promise<void>;
+    add:(data: AddRoutine.Params) => Promise<boolean>;
 }
 
 export namespace AddRoutine {

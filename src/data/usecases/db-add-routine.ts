@@ -6,10 +6,11 @@ export class DbAddRoutine implements AddRoutine {
         private readonly motionRepository: LoadMotionRepository,
         private readonly routineRepository: AddRoutineRepository
     ) {}
-    async add(data: AddRoutine.Params): Promise<void> {
+    async add(data: AddRoutine.Params): Promise<boolean> {
         let motionInRoutine = [];
         for(const motion of data.motions) {
             let result = await this.motionRepository.loadMotion({ id: motion.motion_id + "" });
+            if(!result) { return false; }
             const { motion_id, motion_time, numOfMotion } = motion;
             const { name: motion_name, file: motion_file, parts: motion_parts } = result;
             let motionDetail = {
@@ -29,7 +30,7 @@ export class DbAddRoutine implements AddRoutine {
             motions: motionInRoutine,
             break_time: data.breakTime,
         });
-        
+        return true;
         // motion 테이블에서 나머지 정보 가져오기
         // const motionList = data.motions.map(async (motion) => {
         //     return await this.motionRepository.loadMotion({ id: motion.motionId + "" });

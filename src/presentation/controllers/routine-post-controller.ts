@@ -1,6 +1,6 @@
 import { AddRoutine } from "../../domain/usecases";
-import { ServerError } from "../errors";
-import { ok, serverError } from "../helpers";
+import { MotionNotExistError, ServerError } from "../errors";
+import { notFound, ok, serverError } from "../helpers";
 import { Controller, HttpResponse, MiddlewareRequest } from "../protocols";
 
 export class RoutinePostController implements Controller {
@@ -20,13 +20,16 @@ export class RoutinePostController implements Controller {
                 motionsArr.push(testJson);
             }
             const { imageKey:fileName } = request.mid;
-            await this.addRoutine.add({
+            const result = await this.addRoutine.add({
                 ...(request),
                 // fileName: "request.mid.imageKey",
                 fileName,
                 motions: motionsArr,
                 breakTime: Number(breakTime)
             });
+            if(!result) {
+                return notFound(new MotionNotExistError());
+            }
             return ok({});
             
         } catch (err) {
