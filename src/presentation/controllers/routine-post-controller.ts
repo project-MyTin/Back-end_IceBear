@@ -15,6 +15,7 @@ export class RoutinePostController implements Controller {
             const { motions, breakTime } = request;
             let motionsArr = [];
             // 문자열 -> 객체
+            console.log(request.motions);
             for(let motion of motions) {
                 let testJson = JSON.parse(motion);
                 motionsArr.push(testJson);
