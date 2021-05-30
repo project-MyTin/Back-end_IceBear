@@ -8,3 +8,4 @@ export * from './routine-put-controller';
 export * from './routine-delete-controller';
 export * from './routine-search-controller';
 export * from './routine-get-controller';
+export * from './routine-record-controller';
