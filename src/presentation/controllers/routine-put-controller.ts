@@ -16,17 +16,19 @@ export class RoutinePutController implements Controller {
             const { motions, breakTime } = request;
             let motionsArr = [];
             let totalMotionTime = 0;
+            const { imageKey:file } = request.mid;
+
             // 문자열 -> 객체
             for(let motion of motions) {
-                let testJson = JSON.parse(motion);
-                motionsArr.push(testJson);
-                totalMotionTime += (Number(testJson.motion_time) || 0);
+                // let testJson = JSON.parse(motion);
+                // motionsArr.push(testJson);
+                totalMotionTime += (Number(motion.motion_time) || 0);
             }
             
             const result = await this.updateRoutine.update({
                 ...(request),
-                file: "request.mid.imageKey",
-                motions: motionsArr,// 없을 땐?
+                file,
+                motions,// 없을 땐?
                 time: totalMotionTime,
                 break_time: Number(breakTime),
             });
@@ -41,6 +43,11 @@ export class RoutinePutController implements Controller {
 }
 
 export namespace RoutinePutController {
+    export type MotionInRoutine = {
+        motion_id: number,
+        motion_time: number,
+        numOfMotion: number,
+    };
     export type Request = {
         id: string,
         mid?: MiddlewareRequest,
@@ -51,6 +58,6 @@ export namespace RoutinePutController {
         difficulty?: string,
         breakTime?: string,
         // motions: MotionInRoutine[]
-        motions?: string[]
+        motions?: MotionInRoutine[]
     }
 }
