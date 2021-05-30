@@ -13,20 +13,21 @@ export class RoutinePostController implements Controller {
 
             // 루틴 저장
             const { motions, breakTime } = request;
-            let motionsArr = [];
+            // let motionsArr = [];
             // 문자열 -> 객체
             console.log(request.motions);
             console.log(typeof(request.motions[0]));
-            for(let motion of motions) {
-                let testJson = JSON.parse(motion);
-                motionsArr.push(testJson);
-            }
+            // for(let motion of motions) {
+            //     let testJson = JSON.parse(motion);
+            //     motionsArr.push(testJson);
+            // }
             const { imageKey:fileName } = request.mid;
             const result = await this.addRoutine.add({
                 ...(request),
                 // fileName: "request.mid.imageKey",
                 fileName,
-                motions: motionsArr,
+                // motions: motionsArr,
+                motions,
                 breakTime: Number(breakTime)
             });
             if(!result) {
@@ -41,11 +42,11 @@ export class RoutinePostController implements Controller {
 }
 
 export namespace RoutinePostController {
-    // export type MotionInRoutine = {
-    //     motionId: number,
-    //     motionTime: number,
-    //     numOfMotion: number,
-    // }
+    export type MotionInRoutine = {
+        motion_id: number,
+        motion_time: number,
+        numOfMotion: number,
+    };
 
     export type Request = {
         mid: MiddlewareRequest,
@@ -56,6 +57,6 @@ export namespace RoutinePostController {
         difficulty: string,
         breakTime: string,
         // motions: MotionInRoutine[]
-        motions: string[]
+        motions: MotionInRoutine[]
     }
 }
