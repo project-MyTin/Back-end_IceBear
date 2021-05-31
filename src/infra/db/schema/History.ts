@@ -8,7 +8,7 @@ const History = new Schema({
         required: true
     },
     timestemp: {
-        type: String,
+        type: Number,
         require: true,
     },
     day: {
