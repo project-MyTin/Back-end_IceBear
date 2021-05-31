@@ -10,3 +10,4 @@ export * from './make-routine-search-controller';
 export * from './make-routine-get-controller';
 export * from './make-routine-record-controller';
 export * from './make-calendar-day-controller';
+export * from './make-calendar-day-detail-controller';

@@ -9,3 +9,4 @@ export * from './delete-routine-factory';
 export * from './load-routine-result-factory';
 export * from './add-history-factory';
 export * from './load-calendar-day-factory';
+export * from './load-calendar-day-detail-factory';

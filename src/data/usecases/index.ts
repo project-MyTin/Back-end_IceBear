@@ -10,3 +10,4 @@ export * from './db-load-routine-result';
 export * from './db-load-routine';
 export * from './db-add-history';
 export * from './db-load-calendar-day';
+export * from './db-load-calendar-day-detail';

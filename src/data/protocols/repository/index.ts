@@ -10,3 +10,4 @@ export * from './load-routine-result-repository';
 export * from './load-routine-repository';
 export * from './add-history-repository';
 export * from './load-calendar-day-repository';
+export * from './load-calendar-day-detail-repository';
