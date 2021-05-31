@@ -6,5 +6,5 @@ export namespace AddHistory {
     export type Params = {
         id: string,
         total_time: number,
-    }
+    };
 }

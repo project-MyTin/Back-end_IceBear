@@ -1,8 +1,9 @@
 import { DbAddHistory } from "../../../data/usecases";
 import { AddHistory } from "../../../domain/usecases";
-import { HistoryRepository } from "../../../infra/db/repositories";
+import { HistoryRepository, RoutineRepository } from "../../../infra/db/repositories";
 
 export const makeDbAddHistory = (): AddHistory => {
     const historyRepository = new HistoryRepository();
-    return new DbAddHistory(historyRepository);
+    const routineRepository = new RoutineRepository();
+    return new DbAddHistory(historyRepository, routineRepository);
 }
