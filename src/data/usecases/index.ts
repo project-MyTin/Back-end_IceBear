@@ -9,3 +9,4 @@ export * from './db-delete-routine';
 export * from './db-load-routine-result';
 export * from './db-load-routine';
 export * from './db-add-history';
+export * from './db-load-calendar-day';

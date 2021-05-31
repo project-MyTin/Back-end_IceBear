@@ -9,3 +9,4 @@ export * from  './delete-routine';
 export * from   './load-routine-result';
 export * from   './load-routine';
 export * from   './add-history';
+export * from   './load-calendar-day';

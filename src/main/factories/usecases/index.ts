@@ -8,3 +8,4 @@ export * from './update-routine-factory';
 export * from './delete-routine-factory';
 export * from './load-routine-result-factory';
 export * from './add-history-factory';
+export * from './load-calendar-day-factory';
