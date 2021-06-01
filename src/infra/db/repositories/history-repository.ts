@@ -66,10 +66,13 @@ export class HistoryRepository implements AddHistoryRepository, LoadCalendarDayR
     }
     async loadCalendarDayDetail(data: LoadCalendarDayDetailRepository.Params): Promise<LoadCalendarDayDetailRepository.Result> {
         const { y,m,d } = data;
+        const date = String(d).length < 2 ? "0"+d : d+"";
         const month = String(m).length < 2 ? "0"+m : m+"";
-        const timestemp = `${y}${month}${d}`;
+        const timestemp = `${y}${month}${date}`;
         const result = await (await History).findOne({ timestemp });
-        console.log("result:::::::::::::::::::", result);
+        if(!result) {
+            return false as any;
+        }
         return {
             routine_total_time: result["routine_total_time"],
             exp: result["exp"],

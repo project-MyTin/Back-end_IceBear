@@ -1,6 +1,6 @@
 import { LoadCalendarDayDetail } from "../../domain/usecases";
-import { ServerError } from "../errors";
-import { ok, serverError } from "../helpers";
+import { NotExistError, ServerError } from "../errors";
+import { notFound, ok, serverError } from "../helpers";
 import { Controller, HttpResponse } from "../protocols";
 
 export class CalendarDayDetailController implements Controller {
@@ -10,6 +10,9 @@ export class CalendarDayDetailController implements Controller {
     async handle(request: CalendarDayDetailController.Request): Promise<HttpResponse> {
         try {
             const result = await this.loadCalendarDayDetail.load(request);
+            if(!result) {
+                return notFound(new NotExistError());
+            }
             return ok(result);
         } catch (err) {
             return serverError(new ServerError(err.stack));
