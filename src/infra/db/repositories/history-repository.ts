@@ -21,7 +21,7 @@ export class HistoryRepository implements AddHistoryRepository, LoadCalendarDayR
             await (await History).findOneAndUpdate({ timestemp }, {
                 routine_list: result["routine_list"],
                 motion_list: new_motion_list,
-                routine_total_time: result["routine_total_time"] + data.total_time,
+                routine_total_time: result["routine_total_time"] + Number(data.total_time),
                 routine_num: result["routine_num"] + 1,
                 motion_num: result["motion_num"] + data.motion_num,
                 exp: result["exp"] + 19
