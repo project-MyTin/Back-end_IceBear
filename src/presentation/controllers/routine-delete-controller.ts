@@ -15,10 +15,10 @@ export class RoutineDeleteController implements Controller {
             if(!key) {
                 return notFound(new NotExistError());
             }
-            const result = await this.s3Delete.delete(key);
-            if(!result) {
-                return notFound(new ImageNotExistError());
-            }
+            // const result = await this.s3Delete.delete(key);
+            // if(!result) {
+            //     return notFound(new ImageNotExistError());
+            // }
             return ok({});
         } catch (err) {
             return serverError(new ServerError(err.stack));
