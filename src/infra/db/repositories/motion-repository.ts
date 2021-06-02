@@ -42,7 +42,7 @@ export class MotionRepository implements AddMotionRepository, UpdateMotionReposi
     async loadMotionResult(data: LoadMotionResultRepository.Params): Promise<LoadMotionResultRepository.Result> {
         // 검색 로직 구현
         const list = await (await Motion).find({ name: { $regex: data.q } }).select(
-            "-_id motion_id name difficulty parts file"  
+            "-_id motion_id name difficulty parts file"
         );
         return list as any;
     }

@@ -21,7 +21,6 @@ export class MotionPostController implements Controller {
             return ok({});
         }
         catch(err) {
-            console.log('dddddddddddddd'); //test console loggin
             return serverError(new ServerError(err.stack));
         }
     }
